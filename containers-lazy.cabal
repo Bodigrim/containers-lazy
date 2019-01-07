@@ -1,0 +1,42 @@
+name: containers-lazy
+version: 0.1.0.0
+cabal-version: >=1.10
+build-type: Simple
+license: BSD3
+license-file: LICENSE
+maintainer: Andrew Lelechenko andrew dot lelechenko at gmail dot com
+homepage: https://github.com/Bodigrim/containers-lazy
+bug-reports: https://github.com/Bodigrim/containers-lazy/issues
+synopsis: Sets, lazy in spine and possibly infinite
+author: Andrew Lelechenko
+extra-source-files:
+  changelog.md
+
+source-repository head
+  type: git
+  location: https://github.com/Bodigrim/containers-lazy
+
+library
+  exposed-modules:
+    Data.Set.Lazy
+  build-depends:
+    base >=4.6 && <5,
+    deepseq >=1.2 && <1.5
+  ghc-options: -O2 -Wall
+
+test-suite set-properties
+  type: exitcode-stdio-1.0
+  main-is: set-properties.hs
+  build-depends:
+    base >=4.6 && <5,
+    deepseq >=1.2 && <1.5,
+    HUnit -any,
+    QuickCheck >=2.7.1,
+    test-framework -any,
+    test-framework-hunit -any,
+    test-framework-quickcheck2 -any,
+    transformers -any
+  hs-source-dirs: tests .
+  other-modules:
+    Data.Set.Lazy
+  ghc-options: -O2
